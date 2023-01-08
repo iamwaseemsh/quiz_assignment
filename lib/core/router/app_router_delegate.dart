@@ -97,7 +97,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
           _addPageData( SplashPage(), pageConfig);
           break;
         case Pages.dashboardPage:
-          _addPageData(const DashboardPage(), pageConfig);
+          _addPageData( DashboardPage(), pageConfig);
           break;
         case Pages.quizPage:
           _addPageData(const QuizPage(), pageConfig);

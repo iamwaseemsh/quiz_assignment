@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_assingments/features/splash/presentation/providers/splash_view_model.dart';
 
 import '../../../../core/utils/globals/globals.dart';
+import '../manager/splash_view_model.dart';
 
 class SplashPage extends StatelessWidget {
   SplashPage({Key? key}) : super(key: key);

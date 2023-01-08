@@ -198,6 +198,10 @@ provider
 2.12
 file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/provider-6.0.3/
 file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/provider-6.0.3/lib/
+sembast
+2.16
+file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/sembast-3.3.1+1/
+file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/sembast-3.3.1+1/lib/
 source_span
 2.14
 file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.9.0/
@@ -214,6 +218,10 @@ string_scanner
 2.12
 file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.1/
 file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.1/lib/
+synchronized
+2.14
+file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/synchronized-3.0.0+3/
+file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/synchronized-3.0.0+3/lib/
 term_glyph
 2.12
 file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/term_glyph-1.2.1/

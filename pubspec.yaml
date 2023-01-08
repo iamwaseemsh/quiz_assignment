@@ -56,6 +56,9 @@ dependencies:
   #to encrypt and decrpt data
   encrypt: any
 
+  #To use local NOSQL DB
+  sembast: ^3.3.1+1
+
 
 
 dev_dependencies:

@@ -17,7 +17,7 @@ class ContinueButton extends StatelessWidget {
         style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color?>(backgroundColor)),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.button,
+          style: Theme.of(context).textTheme.button!.copyWith(color: Colors.white),
         ),
         onPressed: onPressed,
       );

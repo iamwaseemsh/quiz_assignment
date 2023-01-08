@@ -314,6 +314,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "sembast",
+      "rootUri": "file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/sembast-3.3.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/mapple.pk/development/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -342,6 +348,12 @@
       "rootUri": "file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///Users/mapple.pk/development/flutter/.pub-cache/hosted/pub.dartlang.org/synchronized-3.0.0+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "term_glyph",
@@ -392,7 +404,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2023-01-08T11:19:38.169667Z",
+  "generated": "2023-01-08T14:36:37.072417Z",
   "generator": "pub",
   "generatorVersion": "2.18.1"
 }

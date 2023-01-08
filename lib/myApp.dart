@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_assingments/features/splash/presentation/providers/splash_view_model.dart';
 
 import 'core/router/back_button_dispatcher.dart';
 import 'core/router/app_router_delegate.dart';
 import 'core/router/app_router_parser.dart';
 import 'core/utils/globals/globals.dart';
 import 'core/utils/theme/app_theme.dart';
+import 'features/splash/presentation/manager/splash_view_model.dart';
 
 bool isSessionExpired = false;
 
