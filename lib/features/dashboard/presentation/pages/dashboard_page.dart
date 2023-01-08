@@ -5,7 +5,7 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DashboardPageContent();
+    return const DashboardPageContent();
   }
 }
 
@@ -14,7 +14,17 @@ class DashboardPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Dashboard"),
+      ),
+      body: Container(
+        child: Column(
+          children: [
+
+          ],
+        ),
+      ),
+    );
   }
 }
-

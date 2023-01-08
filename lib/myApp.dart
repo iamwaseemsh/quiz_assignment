@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz_assingments/features/splash/presentation/providers/splash_view_model.dart';
 
 import 'core/router/back_button_dispatcher.dart';
 import 'core/router/app_router_delegate.dart';
@@ -29,25 +31,35 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
+  SplashViewModel splashViewModel = sl();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    return ScreenUtilInit(
-      designSize: const Size(360, 804),
-      builder: (c, ch) => GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          scaffoldMessengerKey: snackbarKey,
-          title: 'Starting Project',
-          theme: AppTheme.appTheme,
-          routerDelegate: delegate,
-          backButtonDispatcher: backButtonDispatcher,
-          routeInformationParser: parser,
-        ),
-      ),
+    return ChangeNotifierProvider.value(
+        value: splashViewModel,
+        builder: (context, _) {
+        return ScreenUtilInit(
+          designSize: const Size(360, 804),
+          builder: (c, ch) => GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: Consumer<SplashViewModel>(
+              builder: (context, snapeshot,__) {
+                return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  scaffoldMessengerKey: snackbarKey,
+                  title: 'Starting Project',
+                  theme: snapeshot.themeData,
+                  routerDelegate: delegate,
+                  backButtonDispatcher: backButtonDispatcher,
+                  routeInformationParser: parser,
+                );
+              },
+            ),
+          ),
+        );
+      }
     );
   }
 }
