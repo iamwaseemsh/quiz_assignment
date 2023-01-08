@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:logger/logger.dart';
 import 'package:quiz_assingments/core/modals/no_params.dart';
 import 'package:quiz_assingments/core/router/app_state.dart';
@@ -48,16 +49,38 @@ class SplashViewModel extends ChangeNotifier {
     }
   }
 
+  ///TO update the theme
   _setThemeData() {
+    final _primaryColor =
+        ThemeUtils.getColorFromHex(getCustomThemeResponseModel!.colors.primary);
+    final _successColor = ThemeUtils.getColorFromHex(
+        getCustomThemeResponseModel!.colors.onSuccess);
+    final _errorColor =
+        ThemeUtils.getColorFromHex(getCustomThemeResponseModel!.colors.onError);
     _themeData = ThemeData(
-      primaryColor: ThemeUtils.getColorFromHex(
-          getCustomThemeResponseModel!.colors.primary),
-      errorColor: ThemeUtils.getColorFromHex(
-          getCustomThemeResponseModel!.colors.onError),
+      primaryColor: _primaryColor,
+      colorScheme: ColorScheme.fromSwatch(
+        accentColor: _successColor,
+        errorColor: _errorColor,
+      ),
+      appBarTheme: AppBarTheme(backgroundColor: _primaryColor),
+      elevatedButtonTheme: ElevatedButtonThemeData(
 
 
-      // canvasColor: ThemeUtils.getColorFromHex(
-      //     getCustomThemeResponseModel!.colors.onSuccess),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.disabled)) {
+              return const Color(0xFF000812).withOpacity(0.7);
+            } else {
+              return _primaryColor;
+            }
+          }),
+
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          shape:
+              MaterialStateProperty.all<OutlinedBorder>(const StadiumBorder()),
+        ),
+      ),
     );
 
     notifyListeners();

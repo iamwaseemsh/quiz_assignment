@@ -55,6 +55,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
         break;
 
       case PageState.pop:
+
         pop();
         break;
       case PageState.addAll:
@@ -86,7 +87,6 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     addPage(newRoute);
   }
 
-
   void addPage(PageConfiguration pageConfig) {
     final shouldAddPage =
         _pages.isEmpty || (_pages.last.name != pageConfig.path);
@@ -94,13 +94,13 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     if (shouldAddPage) {
       switch (pageConfig.uiPage) {
         case Pages.splashPage:
-          _addPageData( SplashPage(), pageConfig);
+          _addPageData(SplashPage(), pageConfig);
           break;
         case Pages.dashboardPage:
-          _addPageData( DashboardPage(), pageConfig);
+          _addPageData(DashboardPage(), pageConfig);
           break;
         case Pages.quizPage:
-          _addPageData(const QuizPage(), pageConfig);
+          _addPageData(QuizPage(), pageConfig);
           break;
       }
     }
@@ -125,7 +125,10 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   bool _onPopPage(Route<dynamic> route, result) {
+
+    print('here it is coing');
     final didPop = route.didPop(result);
+
 
     if (!didPop) {
       return false;
@@ -139,11 +142,13 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   void pop() {
-    if (globalHomeContext != null) {
-      Navigator.of(globalHomeContext!).pop();
-      globalHomeContext = null;
+    print("it is here 1");
+    if (onBackPress != null) {
+      print('it is here 3');
+      onBackPress!();
       return;
     }
+    print('it is here 2');
     if (canPop()) {
       _removePage(_pages.last as MaterialPage);
     } else {

@@ -1,0 +1,1 @@
+enum QuestionState { answering, result }

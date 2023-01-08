@@ -9,6 +9,7 @@ import 'package:quiz_assingments/features/dashboard/presentation/manager/dashboa
 import 'package:quiz_assingments/features/quiz/data/data_sources/quiz_remote_data_source.dart';
 import 'package:quiz_assingments/features/quiz/data/repositories/quiz_repo_imp.dart';
 import 'package:quiz_assingments/features/quiz/domain/repositories/quiz_repository.dart';
+import 'package:quiz_assingments/features/quiz/domain/use_cases/get_questions_usecase.dart';
 import 'package:quiz_assingments/features/quiz/presentation/manager/quiz_view_model.dart';
 import 'package:quiz_assingments/features/splash/data/data_sources/splash_local_data_source.dart';
 import 'package:quiz_assingments/features/splash/data/data_sources/splash_remote_data_souce.dart';
@@ -28,10 +29,11 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCustomThemeUsecase(sl()));
   sl.registerLazySingleton(() => StoreHighestScoreUsecase(sl()));
   sl.registerLazySingleton(() => GetHighestScoreUsecase(sl()));
+  sl.registerLazySingleton(() => GetQuestionsUsecase(sl()));
 
   //Repositories
   sl.registerLazySingleton<QuizRepository>(
-      () => QuizRepoImp(quizRemoteDataSource: sl(), networkInfo: sl()));
+      () => QuizRepoImp(remoteDataSource: sl(), networkInfo: sl()));
 
   sl.registerLazySingleton<DashboardRepository>(
       () => DashboardRepoImp(localDataSource: sl()));
@@ -44,7 +46,7 @@ Future<void> init() async {
       () => SplashRemoteDataSourceImp(dio: sl()));
 
   sl.registerLazySingleton<QuizRemoteDataSource>(
-      () => QuizRemoteDataSourceImp());
+      () => QuizRemoteDataSourceImp(dio: sl()));
 
   sl.registerLazySingleton<SplashLocalDataSource>(
       () => SplashLocalDataSourceImp());
@@ -68,7 +70,7 @@ Future<void> init() async {
   ///
   sl.registerLazySingleton(() => DashboardViewModel(
       storeHighestScoreUsecase: sl(), getHighestScoreUsecase: sl()));
-  sl.registerLazySingleton(() => QuizViewModel());
+  sl.registerLazySingleton(() => QuizViewModel(getQuestionsUsecase: sl()));
   sl.registerLazySingleton(() => SplashViewModel(getCustomThemeUsecase: sl()));
 
   /// Navigator

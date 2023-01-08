@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_assingments/core/widgets/custom/continue_button.dart';
 import 'package:quiz_assingments/features/dashboard/presentation/manager/dashboard_view_model.dart';
+import 'package:quiz_assingments/features/dashboard/presentation/widgets/start_game_widget.dart';
+import 'package:quiz_assingments/features/quiz/presentation/manager/quiz_view_model.dart';
 
 import '../../../../core/utils/globals/globals.dart';
 
 class DashboardPage extends StatelessWidget {
   DashboardPage({Key? key}) : super(key: key);
-  DashboardViewModel dashboardViewModel = sl();
+  final DashboardViewModel _dashboardViewModel = sl();
+  final QuizViewModel _quizViewModel = sl();
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-        value: dashboardViewModel, child: const DashboardPageContent());
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider.value(value:_quizViewModel ),
+          ChangeNotifierProvider.value(value:_dashboardViewModel ),
+        ],
+        child: const DashboardPageContent());
   }
 }
 
@@ -26,9 +33,9 @@ class DashboardPageContent extends StatefulWidget {
 class _DashboardPageContentState extends State<DashboardPageContent> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<DashboardViewModel>().getHighestScore();
+
   }
 
   @override
@@ -53,9 +60,8 @@ class _DashboardPageContentState extends State<DashboardPageContent> {
                         Center(
                             child: Text(
                                 "Highest score: ${context.read<DashboardViewModel>().highestScore!.value}")),
-                      Center(
-                          child: ContinueButton(
-                              text: 'Start new game', onPressed: () {}))
+                      const StartGameWidget()
+
                     ],
                   );
           }),

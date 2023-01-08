@@ -59,6 +59,9 @@ dependencies:
   #To use local NOSQL DB
   sembast: ^3.3.1+1
 
+  #To case images
+  cached_network_image: ^3.2.3
+
 
 
 dev_dependencies:

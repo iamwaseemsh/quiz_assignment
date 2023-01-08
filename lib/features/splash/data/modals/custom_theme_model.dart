@@ -5,12 +5,12 @@ class GetCustomThemeResponseModel {
     required this.id,
   });
   late final Typography typography;
-  late final Colors colors;
+  late final ColorsModel colors;
   late final String id;
 
   GetCustomThemeResponseModel.fromJson(Map<String, dynamic> json) {
     typography = Typography.fromJson(json['typography']);
-    colors = Colors.fromJson(json['colors']);
+    colors = ColorsModel.fromJson(json['colors']);
     id = json['id'];
   }
 
@@ -241,8 +241,8 @@ class Subtitles {
   }
 }
 
-class Colors {
-  Colors({
+class ColorsModel {
+  ColorsModel({
     required this.primary,
     required this.onSuccess,
     required this.onError,
@@ -251,7 +251,7 @@ class Colors {
   late final String onSuccess;
   late final String onError;
 
-  Colors.fromJson(Map<String, dynamic> json) {
+  ColorsModel.fromJson(Map<String, dynamic> json) {
     primary = json['primary'];
     onSuccess = json['on_success'];
     onError = json['on_error'];

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //ignore: must_be_immutable
 class ContinueButton extends StatelessWidget {
@@ -15,9 +16,12 @@ class ContinueButton extends StatelessWidget {
     if (loadingNotifier == null) {
       return ElevatedButton(
         style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color?>(backgroundColor)),
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.button!.copyWith(color: Colors.white),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.w),
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.button!.copyWith(color: Colors.white),
+          ),
         ),
         onPressed: onPressed,
       );

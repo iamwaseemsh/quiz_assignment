@@ -180,6 +180,7 @@ class AppTheme {
             return const Color(0xFF000812);
           }
         }),
+
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
         minimumSize: MaterialStateProperty.all(Size(double.infinity, 48.h)),
         shape: MaterialStateProperty.all<OutlinedBorder>(const StadiumBorder()),
