@@ -4,8 +4,11 @@ import 'package:quiz_assingments/features/splash/data/modals/custom_theme_model.
 import '../../../../core/error/failures.dart';
 import '../../../../core/modals/no_params.dart';
 
-abstract class SplashRepository{
-  Future<Either<Failure, GetCustomThemeResponseModel>> getCustomTheme(NoParams params);
-
-
+abstract class SplashRepository {
+  /// This method gets theme data from API
+  /// [Input]: [NoParams] contains nothing
+  /// [Output] : if operation successful returns [GetCustomThemeResponseModel] returns app theme variables info
+  /// if unsuccessful the response will be [Failure]
+  Future<Either<Failure, GetCustomThemeResponseModel>> getCustomTheme(
+      NoParams params);
 }

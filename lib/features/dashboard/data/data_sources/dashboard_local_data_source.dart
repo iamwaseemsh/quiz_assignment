@@ -7,7 +7,16 @@ import '../../../../core/error/failures.dart';
 import '../../../../core/modals/no_params.dart';
 
 abstract class DashboardLocalDataSource {
+  /// This method gets highest score
+  /// [Input]: [NoParams] contains no data
+  /// [Output] : if operation successful returns [HighestScoreModel] returns the highest score
+  /// if unsuccessful the response will be [Failure]
   Future<HighestScoreModel> getHighestScore(NoParams params);
+
+  /// This method gets highest score
+  /// [Input]: [HighestScoreModel] contains user scored highest
+  /// [Output] : if operation successful returns [HighestScoreModel] returns the highest score
+  /// if unsuccessful the response will be [Failure]
   Future<HighestScoreModel> storeHighestScore(HighestScoreModel params);
 }
 

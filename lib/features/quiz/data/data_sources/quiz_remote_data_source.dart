@@ -10,6 +10,10 @@ import '../../../../core/utils/constants/app_messages.dart';
 import '../../../../core/utils/constants/app_url.dart';
 
 abstract class QuizRemoteDataSource {
+  /// This method get list of Questions from quiz api
+  /// [Input]: [NoParams] contains nothing
+  /// [Output] : if operation successful returns List of[QuestionModel] returns questions
+  /// if unsuccessful the response will be [Failure]
   Future<List<QuestionModel>> getQuestionsList(NoParams params);
 }
 

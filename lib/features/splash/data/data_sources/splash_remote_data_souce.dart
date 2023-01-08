@@ -10,6 +10,10 @@ import '../../../../core/utils/constants/app_messages.dart';
 import '../../../../core/utils/constants/app_url.dart';
 
 abstract class SplashRemoteDataSource {
+  /// This method gets theme data from API
+  /// [Input]: [NoParams] contains nothing
+  /// [Output] : if operation successful returns [GetCustomThemeResponseModel] returns app theme variables info
+  /// if unsuccessful the response will be [Failure]
   Future<GetCustomThemeResponseModel> getCustomTheme(NoParams params);
 }
 
