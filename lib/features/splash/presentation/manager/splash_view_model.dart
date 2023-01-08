@@ -58,30 +58,42 @@ class SplashViewModel extends ChangeNotifier {
     final _errorColor =
         ThemeUtils.getColorFromHex(getCustomThemeResponseModel!.colors.onError);
     _themeData = ThemeData(
-      primaryColor: _primaryColor,
-      colorScheme: ColorScheme.fromSwatch(
-        accentColor: _successColor,
-        errorColor: _errorColor,
-      ),
-      appBarTheme: AppBarTheme(backgroundColor: _primaryColor),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-
-
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.disabled)) {
-              return const Color(0xFF000812).withOpacity(0.7);
-            } else {
-              return _primaryColor;
-            }
-          }),
-
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          shape:
-              MaterialStateProperty.all<OutlinedBorder>(const StadiumBorder()),
+        primaryColor: _primaryColor,
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: _successColor,
+          errorColor: _errorColor,
         ),
-      ),
-    );
+        appBarTheme: AppBarTheme(
+          backgroundColor: _primaryColor,
+          //Values are not correct
+          // titleTextStyle: ThemeUtils.getTextStyle(
+          //     getCustomThemeResponseModel!.typography.actionBarTitle.toJson()),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.disabled)) {
+                return const Color(0xFF000812).withOpacity(0.7);
+              } else {
+                return _primaryColor;
+              }
+            }),
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            shape: MaterialStateProperty.all<OutlinedBorder>(
+                const StadiumBorder()),
+          ),
+        ),
+        textTheme: TextTheme(
+          headline6: ThemeUtils.getTextStyle(
+              getCustomThemeResponseModel!.typography.screenTitle.toJson()),
+          bodyText1: ThemeUtils.getTextStyle(
+              getCustomThemeResponseModel!.typography.question.toJson()),
+          bodyText2: ThemeUtils.getTextStyle(
+              getCustomThemeResponseModel!.typography.answers.toJson()),
+          subtitle1: ThemeUtils.getTextStyle(
+              getCustomThemeResponseModel!.typography.subtitles.toJson()),
+        ));
+
 
     notifyListeners();
   }

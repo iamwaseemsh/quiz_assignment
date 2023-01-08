@@ -21,8 +21,6 @@ class QuestionWidget extends StatefulWidget {
 }
 
 class _QuestionWidgetState extends State<QuestionWidget> {
-
-
   @override
   Widget build(BuildContext context) {
     return Consumer<QuizViewModel>(builder: (context, provider, ch) {
@@ -67,9 +65,14 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 );
               },
             ),
+            SizedBox(
+              height: 20.h,
+            ),
             if (provider.questionState == QuestionState.result)
               _returnResultWidget(provider.isCorrect),
-
+            SizedBox(
+              height: 10.h,
+            ),
             if (provider.questionState == QuestionState.answering)
               ContinueButton(
                   text: 'Check',
@@ -93,11 +96,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   }
 
   Widget _returnTopHeading() {
-    return const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Text(
           "EmbraceIT Quiz",
-          style: TextStyle(fontSize: 20),
+          style: Theme.of(context).textTheme.headline6,
         ));
   }
 
@@ -115,14 +118,15 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Text(
           text,
-          style: const TextStyle(fontSize: 20),
+          style: Theme.of(context).textTheme.bodyText1,
         ));
   }
 
-  Widget _returnResultWidget(bool result){
-    return Text(result?"Your answer is correct":"Your answer is incorrect",style: TextStyle(
-      color: result?Theme.of(context).primaryColor:Theme.of(context).colorScheme.error
-    ),);
-
+  Widget _returnResultWidget(bool result) {
+    return Text(result ? "Your answer is correct" : "Your answer is incorrect",
+        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+            color: result
+                ? Theme.of(context).primaryColor
+                : Theme.of(context).colorScheme.error));
   }
 }

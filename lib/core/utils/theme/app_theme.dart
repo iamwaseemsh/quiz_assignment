@@ -62,6 +62,7 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
         color: const Color(0xFF000812),
+
       ),
       subtitle1: GoogleFonts.roboto(
         fontSize: 15.sp,

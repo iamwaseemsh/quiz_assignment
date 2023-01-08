@@ -25,14 +25,14 @@ class OptionWidget extends StatelessWidget {
       onTap: onClick,
       child: Container(
         color: getColor(context),
-        margin: const EdgeInsets.symmetric(vertical: 2),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+        margin: const EdgeInsets.symmetric(vertical: 1),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
         child: Row(
           children: [
             Expanded(
               child: Text(
                 option.value,
-                style: const TextStyle(fontSize: 20),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
           ],
@@ -43,20 +43,22 @@ class OptionWidget extends StatelessWidget {
 
   Color? getColor(BuildContext context) {
     final provider = context.read<QuizViewModel>();
+    final successColor = Theme.of(context).colorScheme.secondary;
+    final errorColor = Theme.of(context).colorScheme.error;
     if (state == QuestionState.result) {
       if (provider.currentQuestion.type == null &&
           provider.currentQuestion.options.last.value == 'All of the above') {
-        return Colors.green;
+        return successColor;
       }
 
       if (provider.getCorrectAnswers().contains(option.key)) {
-        return Colors.green;
+        return successColor;
       }
 
       if (selected && provider.checkAnswer()) {
-        return Colors.green;
+        return successColor;
       } else if (selected && !provider.checkAnswer()) {
-        return Colors.red;
+        return errorColor;
       } else {
         return null;
       }

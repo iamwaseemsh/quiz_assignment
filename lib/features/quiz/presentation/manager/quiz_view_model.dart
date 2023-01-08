@@ -69,15 +69,16 @@ class QuizViewModel extends ChangeNotifier {
   }
 
   setAnsweringTimer() {
+
     //Note: A counter can be added to show timer as well on screen
-    answeringTimer = Timer(const Duration(seconds: 4), () {
+    answeringTimer = Timer(const Duration(seconds: 500), () {
       checkAnswer();
       setResultTimer();
     });
   }
 
   setResultTimer() {
-    resultTimer = Timer(const Duration(seconds: 2), () {
+    resultTimer = Timer(const Duration(seconds: 500), () {
       nextQuestion();
     });
   }

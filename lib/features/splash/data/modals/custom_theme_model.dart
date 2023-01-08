@@ -4,12 +4,12 @@ class GetCustomThemeResponseModel {
     required this.colors,
     required this.id,
   });
-  late final Typography typography;
+  late final TypographyModel typography;
   late final ColorsModel colors;
   late final String id;
 
   GetCustomThemeResponseModel.fromJson(Map<String, dynamic> json) {
-    typography = Typography.fromJson(json['typography']);
+    typography = TypographyModel.fromJson(json['typography']);
     colors = ColorsModel.fromJson(json['colors']);
     id = json['id'];
   }
@@ -23,8 +23,8 @@ class GetCustomThemeResponseModel {
   }
 }
 
-class Typography {
-  Typography({
+class TypographyModel {
+  TypographyModel({
     required this.actionBarTitle,
     required this.screenTitle,
     required this.question,
@@ -37,7 +37,7 @@ class Typography {
   late final Answers answers;
   late final Subtitles subtitles;
 
-  Typography.fromJson(Map<String, dynamic> json) {
+  TypographyModel.fromJson(Map<String, dynamic> json) {
     actionBarTitle = ActionBarTitle.fromJson(json['action_bar_title']);
     screenTitle = ScreenTitle.fromJson(json['screen_title']);
     question = Question.fromJson(json['question']);

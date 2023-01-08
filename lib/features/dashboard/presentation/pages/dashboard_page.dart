@@ -14,12 +14,10 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider.value(value:_quizViewModel ),
-          ChangeNotifierProvider.value(value:_dashboardViewModel ),
-        ],
-        child: const DashboardPageContent());
+    return MultiProvider(providers: [
+      ChangeNotifierProvider.value(value: _quizViewModel),
+      ChangeNotifierProvider.value(value: _dashboardViewModel),
+    ], child: const DashboardPageContent());
   }
 }
 
@@ -35,7 +33,6 @@ class _DashboardPageContentState extends State<DashboardPageContent> {
   void initState() {
     super.initState();
     context.read<DashboardViewModel>().getHighestScore();
-
   }
 
   @override
@@ -50,7 +47,7 @@ class _DashboardPageContentState extends State<DashboardPageContent> {
           builder: (_, loading, __) {
             return loading
                 ? const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator.adaptive(),
                   )
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +58,6 @@ class _DashboardPageContentState extends State<DashboardPageContent> {
                             child: Text(
                                 "Highest score: ${context.read<DashboardViewModel>().highestScore!.value}")),
                       const StartGameWidget()
-
                     ],
                   );
           }),
