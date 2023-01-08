@@ -94,7 +94,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     if (shouldAddPage) {
       switch (pageConfig.uiPage) {
         case Pages.splashPage:
-          _addPageData(const SplashPage(), pageConfig);
+          _addPageData( SplashPage(), pageConfig);
           break;
         case Pages.dashboardPage:
           _addPageData(const DashboardPage(), pageConfig);

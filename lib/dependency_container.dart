@@ -11,6 +11,7 @@ import 'package:quiz_assingments/features/splash/data/data_sources/splash_local_
 import 'package:quiz_assingments/features/splash/data/data_sources/splash_remote_data_souce.dart';
 import 'package:quiz_assingments/features/splash/data/repository/splash_repo_imp.dart';
 import 'package:quiz_assingments/features/splash/domain/repository/splash_repository.dart';
+import 'package:quiz_assingments/features/splash/domain/use_cases/get_custom_theme_usecase.dart';
 import 'package:quiz_assingments/features/splash/presentation/providers/splash_view_model.dart';
 
 import 'core/router/app_state.dart';
@@ -20,7 +21,7 @@ import 'package:dio/dio.dart';
 
 Future<void> init() async {
   /// UseCases
-  // sl.registerLazySingleton(() => LoginUsecase(sl()));
+  sl.registerLazySingleton(() => GetCustomThemeUsecase(sl()));
 
   //Repositories
   sl.registerLazySingleton<QuizRepository>(
@@ -28,11 +29,12 @@ Future<void> init() async {
 
   sl.registerLazySingleton<DashboardRepository>(() => DashboardRepoImp());
 
-  sl.registerLazySingleton<SplashRepository>(() => SplashRepoImp());
+  sl.registerLazySingleton<SplashRepository>(
+      () => SplashRepoImp(networkInfo: sl(), remoteDataSource: sl()));
 
   //Data sources
   sl.registerLazySingleton<SplashRemoteDataSource>(
-      () => SplashRemoteDataSourceImp());
+      () => SplashRemoteDataSourceImp(dio: sl()));
 
   sl.registerLazySingleton<QuizRemoteDataSource>(
       () => QuizRemoteDataSourceImp());
@@ -59,7 +61,7 @@ Future<void> init() async {
   ///
   sl.registerLazySingleton(() => DashboardViewModel());
   sl.registerLazySingleton(() => QuizViewModel());
-  sl.registerLazySingleton(() => SplashViewModel());
+  sl.registerLazySingleton(() => SplashViewModel(getCustomThemeUsecase: sl()));
 
   /// Navigator
   sl.registerLazySingleton(() => AppState());

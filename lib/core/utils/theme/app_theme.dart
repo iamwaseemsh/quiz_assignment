@@ -29,11 +29,13 @@ class AppTheme {
       toolbarHeight: 28.h,
     ),
     textTheme: TextTheme(
+
       headline1: GoogleFonts.roboto(
         fontSize: 93.sp,
         fontWeight: FontWeight.w300,
         letterSpacing: -1.5,
         color: Colors.white,
+
       ),
       headline2: GoogleFonts.roboto(
         fontSize: 58.sp,
@@ -68,6 +70,7 @@ class AppTheme {
         fontWeight: FontWeight.w700,
         letterSpacing: 0.15,
         color: const Color(0xFF000812),
+
       ),
       subtitle2: GoogleFonts.roboto(
         fontSize: 13.sp,
@@ -80,6 +83,7 @@ class AppTheme {
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.5,
+
       ),
       bodyText2: GoogleFonts.openSans(
         color: const Color(0xFF000812),
