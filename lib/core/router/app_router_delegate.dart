@@ -55,7 +55,6 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
         break;
 
       case PageState.pop:
-
         pop();
         break;
       case PageState.addAll:
@@ -125,10 +124,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   bool _onPopPage(Route<dynamic> route, result) {
-
-    print('here it is coing');
     final didPop = route.didPop(result);
-
 
     if (!didPop) {
       return false;
@@ -142,13 +138,10 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   void pop() {
-    print("it is here 1");
     if (onBackPress != null) {
-      print('it is here 3');
       onBackPress!();
       return;
     }
-    print('it is here 2');
     if (canPop()) {
       _removePage(_pages.last as MaterialPage);
     } else {
@@ -173,6 +166,9 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   bool canPop() {
+    if (onBackPress != null) {
+      return false;
+    }
     return _pages.length > 1;
   }
 

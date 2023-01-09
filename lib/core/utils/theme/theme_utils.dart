@@ -42,7 +42,6 @@ class ThemeUtils {
 
   static double parseSize(String fontSize) {
     final val= double.parse(fontSize.substring(0, fontSize.length - 2));
-    print(val);
     return val;
   }
 }

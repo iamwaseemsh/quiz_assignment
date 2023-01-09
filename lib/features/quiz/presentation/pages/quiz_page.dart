@@ -13,29 +13,24 @@ class QuizPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
-        value: quizViewModel, child: const QuizPageImplement());
+        value: quizViewModel, child: const QuizPageContent());
   }
 }
 
-class QuizPageImplement extends StatefulWidget {
-  const QuizPageImplement({Key? key}) : super(key: key);
+class QuizPageContent extends StatefulWidget {
+  const QuizPageContent({Key? key}) : super(key: key);
 
   @override
-  State<QuizPageImplement> createState() => _QuizPageImplementState();
+  State<QuizPageContent> createState() => _QuizPageContentState();
 }
 
-class _QuizPageImplementState extends State<QuizPageImplement> {
+class _QuizPageContentState extends State<QuizPageContent> {
   @override
   void initState() {
     super.initState();
+
     context.read<QuizViewModel>().setAnsweringTimer();
     context.read<QuizViewModel>().resetAllValues();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    onBackPress = null;
   }
 
   @override

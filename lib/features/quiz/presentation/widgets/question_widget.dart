@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_assingments/core/utils/globals/globals.dart';
 import 'package:quiz_assingments/core/widgets/custom/continue_button.dart';
 import 'package:quiz_assingments/features/quiz/presentation/manager/quiz_view_model.dart';
 
@@ -73,22 +74,20 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             SizedBox(
               height: 10.h,
             ),
-            if (provider.questionState == QuestionState.answering)
-              ContinueButton(
-                  text: 'Check',
-                  onPressed: () {
+            ContinueButton(
+                text: provider.questionState == QuestionState.result
+                    ? 'Next'
+                    : 'Check',
+                onPressed: () {
+                  if (provider.questionState == QuestionState.answering) {
                     provider.answeringTimer!.cancel();
                     provider.setResultTimer();
                     provider.checkAnswer();
-                  }),
-            if (provider.questionState == QuestionState.result)
-              ContinueButton(
-                  text: 'Next',
-                  onPressed: () {
+                  } else {
                     provider.resultTimer!.cancel();
-
                     provider.nextQuestion();
-                  }),
+                  }
+                }),
           ],
         ),
       );

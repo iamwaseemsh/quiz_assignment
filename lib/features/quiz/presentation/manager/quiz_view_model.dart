@@ -60,16 +60,20 @@ class QuizViewModel extends ChangeNotifier {
   resetAllValues() {
     _questionNo = 0;
     totalScores = 0;
-    if (answeringTimer != null || answeringTimer!.isActive) {
-      answeringTimer!.cancel();
-    }
-    if (resultTimer != null || answeringTimer!.isActive) {
-      resultTimer!.cancel();
-    }
+    questionState = QuestionState.answering;
+
+    // setAnsweringTimer();
+    // if (resultTimer != null || answeringTimer!.isActive) {
+    //   resultTimer!.cancel();
+    // }
   }
 
   setAnsweringTimer() {
     //Note: A counter can be added to show timer as well on screen
+    if (answeringTimer != null && answeringTimer!.isActive) {
+      answeringTimer!.cancel();
+    }
+
     answeringTimer = Timer(const Duration(seconds: 10), () {
       checkAnswer();
       setResultTimer();
@@ -77,6 +81,9 @@ class QuizViewModel extends ChangeNotifier {
   }
 
   setResultTimer() {
+    if (resultTimer != null && resultTimer!.isActive) {
+      resultTimer!.cancel();
+    }
     resultTimer = Timer(const Duration(seconds: 2), () {
       nextQuestion();
     });
@@ -153,7 +160,8 @@ class QuizViewModel extends ChangeNotifier {
     } else {
       onBackPress = null;
       DashboardViewModel dashboardViewModel = sl();
-      if (dashboardViewModel.highestScore != null &&
+
+      if (dashboardViewModel.highestScore == null ||
           dashboardViewModel.highestScore!.value < totalScores) {
         dashboardViewModel.storeHighestScore(totalScores);
       }
